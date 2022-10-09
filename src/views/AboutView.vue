@@ -1,12 +1,14 @@
 <template>
-  <div class="about" id="container">
-  </div>
+  <div class="about" id="container"></div>
 </template>
  
-<script>
-import { Graph } from '@antv/x6';
+<script setup>
+import { Graph } from '@antv/x6'
+import { onMounted } from 'vue'
+
 const data = {
-  panning:true,
+  //移动画布
+  panning: true,
   // 节点
   nodes: [
     {
@@ -47,43 +49,40 @@ const data = {
   width: 800,
   height: 600,
 };
- 
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "index",
-  mounted () {
-    this.init();
-    // this.graph.zoom(0.2) // 获取缩放级别
-    this.graph.drawBackground({color: 'yellow',})
-  },
-  methods: {
-    init(){
-      new Graph({
-        //支持画布的平移拖拽
-        panning: true,
-        modifiers: 'shift',
-        //看到画布
-  //       scroller: {
-  //   enabled: true,
-  //   pannable: true,
-  //   pageVisible: true,
-  //   pageBreak: false,
-  // },
-  // mousewheel: {
-  //   enabled: true,
-  //   modifiers: ['ctrl', 'meta'],
-  // },
-        container: document.getElementById('container'),
-        background: true,
-        width: 800,
-        height: 600,
-      }).fromJSON(data)
-    }
-  }
+
+const init = () => {
+  new Graph({
+    //网格
+    grid: {
+      size: 20,
+      visible: true,
+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'
+      args: {
+        color: '#000', // 网格线/点颜色
+        thickness: 1,     // 网格线宽度/网格点大小
+      },
+    },
+    //支持画布的平移拖拽
+    panning: true,
+    modifiers: 'shift',
+    //看到画布
+    scroller: {
+      enabled: true,
+      pannable: true,
+      pageVisible: true,
+      pageBreak: false,
+    },
+    mousewheel: {
+      enabled: true,
+      modifiers: ['ctrl', 'meta'],
+    },
+    container: document.getElementById('container'),
+    width: 800,
+    height: 600
+  }).fromJSON(data)
 }
- 
+
+onMounted(() => {
+  init()
+})
 </script>
- 
-<style scoped>
- 
-</style>
