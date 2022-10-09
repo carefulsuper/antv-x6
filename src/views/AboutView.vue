@@ -1,7 +1,9 @@
 <template>
-  <div class="about" id="container"></div>
+    <div class="aboutView">
+        <div class="about" id="container"></div>
+    </div>
 </template>
- 
+
 <script setup>
 import { Graph } from '@antv/x6'
 import { onMounted } from 'vue'
@@ -42,7 +44,7 @@ const data = {
       source: 'node1', // String，必须，起始节点 id
       target: 'node2', // String，必须，目标节点 id
       // eslint-disable-next-line no-dupe-keys
-      target: 'node3', // String，必须，目标节点 id
+      //target: 'node3', // String，必须，目标节点 id
     },
   ],
   container: document.getElementById('container'),
