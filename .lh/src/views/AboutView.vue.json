@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/views/AboutView.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1665303681700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665303814145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,14 @@\n       y: 40,       // Number，必选，节点位置的 y 值\r\n       width: 80,   // Number，可选，节点大小的 width 值\r\n       height: 40,  // Number，可选，节点大小的 height 值\r\n       label: 'hello', // String，节点标签\r\n+      attrs:{\r\n+        body: {\r\n+      fill: 'blue',\r\n     },\r\n+      }\r\n+    },\r\n     {\r\n       id: 'node2', // String，节点的唯一标识\r\n       x: 160,      // Number，必选，节点位置的 x 值\r\n       y: 180,      // Number，必选，节点位置的 y 值\r\n"
+                },
+                {
+                    "date": 1665303824388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <template>\r\n-    <div class=\"aboutView\">\r\n-        <div class=\"about\" id=\"container\"></div>\r\n-    </div>\r\n+  <div class=\"aboutView\">\r\n+    <div class=\"about\" id=\"container\"></div>\r\n+  </div>\r\n </template>\r\n \r\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n@@ -19,12 +19,12 @@\n       y: 40,       // Number，必选，节点位置的 y 值\r\n       width: 80,   // Number，可选，节点大小的 width 值\r\n       height: 40,  // Number，可选，节点大小的 height 值\r\n       label: 'hello', // String，节点标签\r\n-      attrs:{\r\n+      attrs: {\r\n         body: {\r\n-      fill: 'blue',\r\n-    },\r\n+          fill: 'blue',\r\n+        },\r\n       }\r\n     },\r\n     {\r\n       id: 'node2', // String，节点的唯一标识\r\n"
+                },
+                {
+                    "date": 1665304109397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,13 +18,17 @@\n       x: 40,       // Number，必选，节点位置的 x 值\r\n       y: 40,       // Number，必选，节点位置的 y 值\r\n       width: 80,   // Number，可选，节点大小的 width 值\r\n       height: 40,  // Number，可选，节点大小的 height 值\r\n-      label: 'hello', // String，节点标签\r\n+      // label: 'hello', // String，节点标签\r\n       attrs: {\r\n         body: {\r\n           fill: 'blue',\r\n         },\r\n+        label:{\r\n+          text:'hello',\r\n+          color:'yellow',\r\n+        }\r\n       }\r\n     },\r\n     {\r\n       id: 'node2', // String，节点的唯一标识\r\n"
+                },
+                {
+                    "date": 1665304124571,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n           fill: 'blue',\r\n         },\r\n         label:{\r\n           text:'hello',\r\n-          color:'yellow',\r\n+          fill:'yellow',\r\n         }\r\n       }\r\n     },\r\n     {\r\n"
+                },
+                {
+                    "date": 1665304442108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,44 @@\n   </div>\r\n </template>\r\n \r\n <script setup>\r\n-import { Graph } from '@antv/x6'\r\n+import { Graph,Shape } from '@antv/x6'\r\n import { onMounted } from 'vue'\r\n+const rect = new Shape.Rect({\r\n+  id: 'node1',\r\n+  x: 40,\r\n+  y: 40,\r\n+  width: 100,\r\n+  height: 40,\r\n+  label: 'rect', \r\n+  zIndex: 2,\r\n+})\r\n \r\n+const circle = new Shape.Circle({\r\n+  id: 'node2',\r\n+  x: 280,\r\n+  y: 200,\r\n+  width: 60,\r\n+  height: 60,\r\n+  label: 'circle', \r\n+  zIndex: 2,\r\n+})\r\n+\r\n+const edge = new Shape.Edge({\r\n+  id: 'edge1',\r\n+  source: rect,\r\n+  target: circle,\r\n+  zIndex: 1,\r\n+})\r\n+\r\n+// eslint-disable-next-line no-undef\r\n+graph.addNode(rect)\r\n+// eslint-disable-next-line no-undef\r\n+graph.addNode(circle)\r\n+// eslint-disable-next-line no-undef\r\n+graph.addEdge(edge)\r\n+\r\n const data = {\r\n   //移动画布\r\n   panning: true,\r\n   // 节点\r\n"
+                },
+                {
+                    "date": 1665304543038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,42 +6,18 @@\n \r\n <script setup>\r\n import { Graph,Shape } from '@antv/x6'\r\n import { onMounted } from 'vue'\r\n-const rect = new Shape.Rect({\r\n-  id: 'node1',\r\n-  x: 40,\r\n-  y: 40,\r\n-  width: 100,\r\n-  height: 40,\r\n-  label: 'rect', \r\n-  zIndex: 2,\r\n-})\r\n-\r\n const circle = new Shape.Circle({\r\n-  id: 'node2',\r\n+  id: 'node4',\r\n   x: 280,\r\n   y: 200,\r\n   width: 60,\r\n   height: 60,\r\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n \r\n-const edge = new Shape.Edge({\r\n-  id: 'edge1',\r\n-  source: rect,\r\n-  target: circle,\r\n-  zIndex: 1,\r\n-})\r\n-\r\n-// eslint-disable-next-line no-undef\r\n-graph.addNode(rect)\r\n-// eslint-disable-next-line no-undef\r\n-graph.addNode(circle)\r\n-// eslint-disable-next-line no-undef\r\n-graph.addEdge(edge)\r\n-\r\n const data = {\r\n   //移动画布\r\n   panning: true,\r\n   // 节点\r\n@@ -86,8 +62,10 @@\n       source: 'node1', // String，必须，起始节点 id\r\n       target: 'node2', // String，必须，目标节点 id\r\n       // eslint-disable-next-line no-dupe-keys\r\n       //target: 'node3', // String，必须，目标节点 id\r\n+      // eslint-disable-next-line no-dupe-keys\r\n+      target: 'node4',\r\n     },\r\n   ],\r\n   container: document.getElementById('container'),\r\n   width: 800,\r\n"
+                },
+                {
+                    "date": 1665304687997,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,13 @@\n <template>\r\n-  <div class=\"aboutView\">\r\n-    <div class=\"about\" id=\"container\"></div>\r\n-  </div>\r\n+    <div class=\"aboutView\">\r\n+        <div class=\"about\" id=\"container\"></div>\r\n+    </div>\r\n </template>\r\n \r\n <script setup>\r\n-import { Graph,Shape } from '@antv/x6'\r\n+import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue'\r\n-const circle = new Shape.Circle({\r\n-  id: 'node4',\r\n-  x: 280,\r\n-  y: 200,\r\n-  width: 60,\r\n-  height: 60,\r\n-  label: 'circle', \r\n-  zIndex: 2,\r\n-})\r\n \r\n const data = {\r\n   //移动画布\r\n   panning: true,\r\n@@ -29,14 +20,14 @@\n       width: 80,   // Number，可选，节点大小的 width 值\r\n       height: 40,  // Number，可选，节点大小的 height 值\r\n       // label: 'hello', // String，节点标签\r\n       attrs: {\r\n-        body: {\r\n-          fill: 'blue',\r\n+        body:{\r\n+          fill: 'yellow',\r\n         },\r\n-        label:{\r\n-          text:'hello',\r\n-          fill:'yellow',\r\n+        text: {\r\n+          label: 'hello',\r\n+          fill: 'red',\r\n         }\r\n       }\r\n     },\r\n     {\r\n@@ -62,10 +53,8 @@\n       source: 'node1', // String，必须，起始节点 id\r\n       target: 'node2', // String，必须，目标节点 id\r\n       // eslint-disable-next-line no-dupe-keys\r\n       //target: 'node3', // String，必须，目标节点 id\r\n-      // eslint-disable-next-line no-dupe-keys\r\n-      target: 'node4',\r\n     },\r\n   ],\r\n   container: document.getElementById('container'),\r\n   width: 800,\r\n"
+                },
+                {
+                    "date": 1665304717463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,10 +23,10 @@\n       attrs: {\r\n         body:{\r\n           fill: 'yellow',\r\n         },\r\n-        text: {\r\n-          label: 'hello',\r\n+        label: {\r\n+          text: 'hello',\r\n           fill: 'red',\r\n         }\r\n       }\r\n     },\r\n"
+                },
+                {
+                    "date": 1665309207394,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,8 +59,9 @@\n   container: document.getElementById('container'),\r\n   width: 800,\r\n   height: 600,\r\n };\r\n+console.log(typeof(data))\r\n \r\n const init = () => {\r\n   new Graph({\r\n     //网格\r\n"
+                }
+            ],
+            "date": 1665303681700,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <div class=\"aboutView\">\r\n        <div class=\"about\" id=\"container\"></div>\r\n    </div>\r\n</template>\r\n\r\n<script setup>\r\nimport { Graph } from '@antv/x6'\r\nimport { onMounted } from 'vue'\r\n\r\nconst data = {\r\n  //移动画布\r\n  panning: true,\r\n  // 节点\r\n  nodes: [\r\n    {\r\n      id: 'node1', // String，可选，节点的唯一标识\r\n      x: 40,       // Number，必选，节点位置的 x 值\r\n      y: 40,       // Number，必选，节点位置的 y 值\r\n      width: 80,   // Number，可选，节点大小的 width 值\r\n      height: 40,  // Number，可选，节点大小的 height 值\r\n      label: 'hello', // String，节点标签\r\n    },\r\n    {\r\n      id: 'node2', // String，节点的唯一标识\r\n      x: 160,      // Number，必选，节点位置的 x 值\r\n      y: 180,      // Number，必选，节点位置的 y 值\r\n      width: 80,   // Number，可选，节点大小的 width 值\r\n      height: 40,  // Number，可选，节点大小的 height 值\r\n      label: 'world', // String，节点标签\r\n    },\r\n    {\r\n      id: 'node3', // String，可选，节点的唯一标识\r\n      x: 80,       // Number，必选，节点位置的 x 值\r\n      y: 80,       // Number，必选，节点位置的 y 值\r\n      width: 80,   // Number，可选，节点大小的 width 值\r\n      height: 40,  // Number，可选，节点大小的 height 值\r\n      label: '猪猪侠', // String，节点标签\r\n    },\r\n  ],\r\n  // 边\r\n  edges: [\r\n    {\r\n      source: 'node1', // String，必须，起始节点 id\r\n      target: 'node2', // String，必须，目标节点 id\r\n      // eslint-disable-next-line no-dupe-keys\r\n      //target: 'node3', // String，必须，目标节点 id\r\n    },\r\n  ],\r\n  container: document.getElementById('container'),\r\n  width: 800,\r\n  height: 600,\r\n};\r\n\r\nconst init = () => {\r\n  new Graph({\r\n    //网格\r\n    grid: {\r\n      size: 20,\r\n      visible: true,\r\n      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n      args: {\r\n        color: '#000', // 网格线/点颜色\r\n        thickness: 1,     // 网格线宽度/网格点大小\r\n      },\r\n    },\r\n    //支持画布的平移拖拽\r\n    panning: true,\r\n    modifiers: 'shift',\r\n    //看到画布\r\n    scroller: {\r\n      enabled: true,\r\n      pannable: true,\r\n      pageVisible: true,\r\n      pageBreak: false,\r\n    },\r\n    mousewheel: {\r\n      enabled: true,\r\n      modifiers: ['ctrl', 'meta'],\r\n    },\r\n    container: document.getElementById('container'),\r\n    width: 800,\r\n    height: 600\r\n  }).fromJSON(data)\r\n}\r\n\r\nonMounted(() => {\r\n  init()\r\n})\r\n</script>\r\n"
+        }
+    ]
+}

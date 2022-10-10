@@ -1,0 +1,266 @@
+{
+    "sourceFile": "src/views/ThirdView.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 62,
+            "patches": [
+                {
+                    "date": 1665304777798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665304839082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,50 +1,6 @@\n <template>\r\n     <div class=\"third\">\r\n-      <h1>This is an about page</h1>\r\n-      <div id=\"container\"></div>\r\n+      <h1>you are sb</h1>\r\n     </div>\r\n   </template>\r\n-  \r\n-  <script setup>\r\n-  import { onMounted } from 'vue'\r\n-  import { Graph } from '@antv/x6'\r\n-  // 使用 CDN 引入时暴露了 X6 全局变量\r\n-  // const { Graph } = X6\r\n-  const data = {\r\n-    // 节点\r\n-    nodes: [\r\n-      {\r\n-        id: 'node1', // String，可选，节点的唯一标识\r\n-        x: 40, // Number，必选，节点位置的 x 值\r\n-        y: 40, // Number，必选，节点位置的 y 值\r\n-        width: 80, // Number，可选，节点大小的 width 值\r\n-        height: 40, // Number，可选，节点大小的 height 值\r\n-        label: 'hello', // String，节点标签\r\n-      },\r\n-      {\r\n-        id: 'node2', // String，节点的唯一标识\r\n-        x: 160, // Number，必选，节点位置的 x 值\r\n-        y: 180, // Number，必选，节点位置的 y 值\r\n-        width: 80, // Number，可选，节点大小的 width 值\r\n-        height: 40, // Number，可选，节点大小的 height 值\r\n-        label: 'world', // String，节点标签\r\n-      },\r\n-    ],\r\n-    // 边\r\n-    edges: [\r\n-      {\r\n-        source: 'node1', // String，必须，起始节点 id\r\n-        target: 'node2', // String，必须，目标节点 id\r\n-      },\r\n-    ],\r\n-  }\r\n-  onMounted(() => {\r\n-    const graph = new Graph({\r\n-      container: document.getElementById('container'),\r\n-      width: 800,\r\n-      height: 600,\r\n-    })\r\n-    graph.fromJSON(data)\r\n-  })\r\n-  </script>\r\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665304846255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <template>\r\n     <div class=\"third\">\r\n-      <h1>you are sb</h1>\r\n+      <h1>you are my hero</h1>\r\n     </div>\r\n   </template>\r\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305480903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,29 @@\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n     </div>\r\n   </template>\r\n-  \n\\ No newline at end of file\n+  \r\n+<script setup>\r\n+import { Shape } from '@antv/x6'\r\n+\r\n+const rect = new Shape.Rect({\r\n+  id: 'node1',\r\n+  x: 40,\r\n+  y: 40,\r\n+  width: 100,\r\n+  height: 40,\r\n+  label: 'rect', \r\n+  zIndex: 2,\r\n+})\r\n+\r\n+const circle = new Shape.Circle({\r\n+  id: 'node2',\r\n+  x: 280,\r\n+  y: 200,\r\n+  width: 60,\r\n+  height: 60,\r\n+  label: 'circle', \r\n+  zIndex: 2,\r\n+})\r\n+\r\n+</script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305541795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n   </template>\r\n   \r\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n+import { onMounted } from 'vue';\r\n \r\n const rect = new Shape.Rect({\r\n   id: 'node1',\r\n   x: 40,\r\n@@ -25,6 +26,9 @@\n   height: 60,\r\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n-\r\n+onMounted(()=>{\r\n+  circle,\r\n+  rect\r\n+})\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305677597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,7 @@\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n onMounted(()=>{\r\n-  circle,\r\n-  rect\r\n+  circle\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305695340,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,7 +27,8 @@\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n onMounted(()=>{\r\n-  circle\r\n+  circle(),\r\n+  rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305792335,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n+      <div id=\"container\"></div>\r\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n@@ -26,9 +27,39 @@\n   height: 60,\r\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n+const init = () => {\r\n+  new Graph({\r\n+    //网格\r\n+    grid: {\r\n+      size: 20,\r\n+      visible: true,\r\n+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n+      args: {\r\n+        color: '#000', // 网格线/点颜色\r\n+        thickness: 1,     // 网格线宽度/网格点大小\r\n+      },\r\n+    },\r\n+    //支持画布的平移拖拽\r\n+    panning: true,\r\n+    modifiers: 'shift',\r\n+    //看到画布\r\n+    scroller: {\r\n+      enabled: true,\r\n+      pannable: true,\r\n+      pageVisible: true,\r\n+      pageBreak: false,\r\n+    },\r\n+    mousewheel: {\r\n+      enabled: true,\r\n+      modifiers: ['ctrl', 'meta'],\r\n+    },\r\n+    container: document.getElementById('container'),\r\n+    width: 800,\r\n+    height: 600\r\n+  }).fromJSON(rect,circle)\r\n+}\r\n onMounted(()=>{\r\n-  circle(),\r\n-  rect()\r\n+init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665305810959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n-import { Shape } from '@antv/x6'\r\n+import { Graph,Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect = new Shape.Rect({\r\n   id: 'node1',\r\n"
+                },
+                {
+                    "date": 1665305828094,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,7 +59,7 @@\n     height: 600\r\n   }).fromJSON(rect,circle)\r\n }\r\n onMounted(()=>{\r\n-init()\r\n+  init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665306091378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,8 @@\n   height: 60,\r\n   label: 'circle', \r\n   zIndex: 2,\r\n })\r\n-const init = () => {\r\n   new Graph({\r\n     //网格\r\n     grid: {\r\n       size: 20,\r\n@@ -57,9 +56,9 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   }).fromJSON(rect,circle)\r\n-}\r\n onMounted(()=>{\r\n-  init()\r\n+  rect(),\r\n+  circle()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665306157125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,11 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n-      <div id=\"container\"></div>\r\n+      <div class=\"myView\">\r\n+        <div id=\"container\"></div>\r\n+      </div>\r\n+\r\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n"
+                },
+                {
+                    "date": 1665306287937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,8 @@\n       <h1>you are my hero</h1>\r\n       <div class=\"myView\">\r\n         <div id=\"container\"></div>\r\n       </div>\r\n-\r\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n@@ -59,8 +58,9 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   }).fromJSON(rect,circle)\r\n+  console.log(rect)\r\n onMounted(()=>{\r\n   rect(),\r\n   circle()\r\n })\r\n"
+                },
+                {
+                    "date": 1665306327794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n+console.log(rect)\r\n \r\n const circle = new Shape.Circle({\r\n   id: 'node2',\r\n   x: 280,\r\n@@ -58,9 +59,9 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   }).fromJSON(rect,circle)\r\n-  console.log(rect)\r\n+ \r\n onMounted(()=>{\r\n   rect(),\r\n   circle()\r\n })\r\n"
+                },
+                {
+                    "date": 1665306395467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-console.log(rect)\r\n+this.graph.addNode(rect)\r\n \r\n const circle = new Shape.Circle({\r\n   id: 'node2',\r\n   x: 280,\r\n"
+                },
+                {
+                    "date": 1665306426390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,7 @@\n     height: 600\r\n   }).fromJSON(rect,circle)\r\n  \r\n onMounted(()=>{\r\n-  rect(),\r\n-  circle()\r\n+  rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665306619470,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n       <div class=\"myView\">\r\n-        <div id=\"container\"></div>\r\n+        <div class=\"third\" id=\"container\"></div>\r\n       </div>\r\n     </div>\r\n   </template>\r\n   \r\n"
+                },
+                {
+                    "date": 1665306692527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,18 +20,8 @@\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n this.graph.addNode(rect)\r\n-\r\n-const circle = new Shape.Circle({\r\n-  id: 'node2',\r\n-  x: 280,\r\n-  y: 200,\r\n-  width: 60,\r\n-  height: 60,\r\n-  label: 'circle', \r\n-  zIndex: 2,\r\n-})\r\n   new Graph({\r\n     //网格\r\n     grid: {\r\n       size: 20,\r\n@@ -58,9 +48,9 @@\n     },\r\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n-  }).fromJSON(rect,circle)\r\n+  }).fromJSON(rect)\r\n  \r\n onMounted(()=>{\r\n   rect()\r\n })\r\n"
+                },
+                {
+                    "date": 1665306919370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n       <div class=\"myView\">\r\n-        <div class=\"third\" id=\"container\"></div>\r\n+        <div id=\"container\"></div>\r\n       </div>\r\n     </div>\r\n   </template>\r\n   \r\n"
+                },
+                {
+                    "date": 1665306928963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n-      <div class=\"myView\">\r\n-        <div id=\"container\"></div>\r\n+      <div >\r\n+        <div class=\"myView\" id=\"container\"></div>\r\n       </div>\r\n     </div>\r\n   </template>\r\n   \r\n"
+                },
+                {
+                    "date": 1665307016286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n-import { Graph,Shape } from '@antv/x6'\r\n+import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect = new Shape.Rect({\r\n   id: 'node1',\r\n@@ -20,38 +20,8 @@\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n this.graph.addNode(rect)\r\n-  new Graph({\r\n-    //网格\r\n-    grid: {\r\n-      size: 20,\r\n-      visible: true,\r\n-      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n-      args: {\r\n-        color: '#000', // 网格线/点颜色\r\n-        thickness: 1,     // 网格线宽度/网格点大小\r\n-      },\r\n-    },\r\n-    //支持画布的平移拖拽\r\n-    panning: true,\r\n-    modifiers: 'shift',\r\n-    //看到画布\r\n-    scroller: {\r\n-      enabled: true,\r\n-      pannable: true,\r\n-      pageVisible: true,\r\n-      pageBreak: false,\r\n-    },\r\n-    mousewheel: {\r\n-      enabled: true,\r\n-      modifiers: ['ctrl', 'meta'],\r\n-    },\r\n-    container: document.getElementById('container'),\r\n-    width: 800,\r\n-    height: 600\r\n-  }).fromJSON(rect)\r\n- \r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307076608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.graph.addNode(rect)\r\n+this.rect.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307086421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.rect.addNode(rect)\r\n+this.Rect.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307095266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.Rect.addNode(rect)\r\n+this.container.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307217789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.container.addNode(rect)\r\n+// this.container.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307284022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n-const rect = new Shape.Rect({\r\n+const rect = () => new Shape.Rect({\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n"
+                },
+                {
+                    "date": 1665307304455,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-// this.container.addNode(rect)\r\n+this.container.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307312942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.container.addNode(rect)\r\n+this.graph.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307462431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect = () => new Shape.Rect({\r\n+  container: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n"
+                },
+                {
+                    "date": 1665307516795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n-const rect = () => new Shape.Rect({\r\n+const rect = new Shape.Rect({\r\n   container: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n"
+                },
+                {
+                    "date": 1665307763091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,19 @@\n <template>\r\n     <div class=\"third\">\r\n       <h1>you are my hero</h1>\r\n       <div >\r\n-        <div class=\"myView\" id=\"container\"></div>\r\n+        <div class=\"myView\" id=\"containers\"></div>\r\n       </div>\r\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n-import { Shape } from '@antv/x6'\r\n+import {Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect = new Shape.Rect({\r\n-  container: document.getElementById('container'),\r\n+  containers: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n"
+                },
+                {
+                    "date": 1665307826091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,8 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n-this.graph.addNode(rect)\r\n onMounted(()=>{\r\n   rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665307854849,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n <script setup>\r\n import {Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n-const rect = new Shape.Rect({\r\n+const rect =()=> new Shape.Rect({\r\n   containers: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n"
+                },
+                {
+                    "date": 1665307876871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,7 @@\n   zIndex: 2,\r\n })\r\n onMounted(()=>{\r\n   rect()\r\n+  console.log('1')\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665308126072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n })\r\n+console.log(rect)\r\n onMounted(()=>{\r\n   rect()\r\n   console.log('1')\r\n })\r\n"
+                },
+                {
+                    "date": 1665308276838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,20 +7,23 @@\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n-import {Shape } from '@antv/x6'\r\n+import { Graph,Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect =()=> new Shape.Rect({\r\n-  containers: document.getElementById('container'),\r\n+  Graph({\r\n+      containers: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n+  })\r\n+\r\n })\r\n console.log(rect)\r\n onMounted(()=>{\r\n   rect()\r\n"
+                },
+                {
+                    "date": 1665308304800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,23 +7,20 @@\n     </div>\r\n   </template>\r\n   \r\n <script setup>\r\n-import { Graph,Shape } from '@antv/x6'\r\n+import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect =()=> new Shape.Rect({\r\n-  Graph({\r\n-      containers: document.getElementById('container'),\r\n+  containers: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n   height: 40,\r\n   label: 'rect', \r\n   zIndex: 2,\r\n-  })\r\n-\r\n })\r\n console.log(rect)\r\n onMounted(()=>{\r\n   rect()\r\n"
+                },
+                {
+                    "date": 1665308405638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,29 +1,29 @@\n <template>\r\n-    <div class=\"third\">\r\n-      <h1>you are my hero</h1>\r\n-      <div >\r\n-        <div class=\"myView\" id=\"containers\"></div>\r\n-      </div>\r\n+  <div class=\"third\">\r\n+    <h1>you are my hero</h1>\r\n+    <div>\r\n+      <div class=\"myView\" id=\"containers\"></div>\r\n     </div>\r\n-  </template>\r\n+  </div>\r\n+</template>\r\n   \r\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n-const rect =()=> new Shape.Rect({\r\n+const rect = () => new Shape.Rect({\r\n   containers: document.getElementById('container'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n   height: 40,\r\n-  label: 'rect', \r\n+  label: 'rect',\r\n   zIndex: 2,\r\n })\r\n console.log(rect)\r\n-onMounted(()=>{\r\n+onMounted(() => {\r\n   rect()\r\n   console.log('1')\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665308442764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,8 @@\n   zIndex: 2,\r\n })\r\n console.log(rect)\r\n onMounted(() => {\r\n-  rect()\r\n+  rect(),\r\n   console.log('1')\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665308459172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,9 @@\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n console.log(rect)\r\n+rect()\r\n onMounted(() => {\r\n   rect(),\r\n   console.log('1')\r\n })\r\n"
+                },
+                {
+                    "date": 1665308526606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n const rect = () => new Shape.Rect({\r\n-  containers: document.getElementById('container'),\r\n+  containers: document.getElementById('containers'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n@@ -24,7 +24,7 @@\n console.log(rect)\r\n rect()\r\n onMounted(() => {\r\n   rect(),\r\n-  console.log('1')\r\n+    console.log('1')\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665308599369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n \r\n-const rect = () => new Shape.Rect({\r\n+const rect =  new Shape.Rect({\r\n   containers: document.getElementById('containers'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n"
+                },
+                {
+                    "date": 1665308724190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,8 @@\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n console.log(rect)\r\n-rect()\r\n onMounted(() => {\r\n   rect(),\r\n     console.log('1')\r\n })\r\n"
+                },
+                {
+                    "date": 1665308986171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,12 @@\n </template>\r\n   \r\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n+import { init } from 'events';\r\n import { onMounted } from 'vue';\r\n \r\n-const rect =  new Shape.Rect({\r\n+const rect = new Shape.Rect({\r\n   containers: document.getElementById('containers'),\r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n@@ -22,8 +23,7 @@\n   zIndex: 2,\r\n })\r\n console.log(rect)\r\n onMounted(() => {\r\n-  rect(),\r\n-    console.log('1')\r\n+  init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309110973,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,12 @@\n </template>\r\n   \r\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n-import { init } from 'events';\r\n import { onMounted } from 'vue';\r\n+const init = () =>{\r\n \r\n+}\r\n const rect = new Shape.Rect({\r\n   containers: document.getElementById('containers'),\r\n   id: 'node1',\r\n   x: 40,\r\n@@ -21,8 +22,9 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n+typeof(rect)\r\n console.log(rect)\r\n onMounted(() => {\r\n   init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665309137720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n-typeof(rect)\r\n+console.lof(typeof(rect))\r\n console.log(rect)\r\n onMounted(() => {\r\n   init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665309158202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,8 @@\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n console.lof(typeof(rect))\r\n-console.log(rect)\r\n onMounted(() => {\r\n   init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309251143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,8 @@\n   \r\n <script setup>\r\n import { Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const init = () =>{\r\n-\r\n-}\r\n const rect = new Shape.Rect({\r\n   containers: document.getElementById('containers'),\r\n   id: 'node1',\r\n   x: 40,\r\n@@ -24,7 +21,7 @@\n   zIndex: 2,\r\n })\r\n console.lof(typeof(rect))\r\n onMounted(() => {\r\n-  init()\r\n+  rect,\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309270363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,10 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n-console.lof(typeof(rect))\r\n+console.log(typeof(rect))\r\n+console.\r\n onMounted(() => {\r\n   rect,\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309321144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,8 @@\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n console.log(typeof(rect))\r\n-console.\r\n onMounted(() => {\r\n-  rect,\r\n+  rect(),\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309329107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,7 +21,7 @@\n   zIndex: 2,\r\n })\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n-  rect(),\r\n+  rect()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309506393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,21 +7,27 @@\n   </div>\r\n </template>\r\n   \r\n <script setup>\r\n-import { Shape } from '@antv/x6'\r\n+import { Graph, Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const rect = new Shape.Rect({\r\n-  containers: document.getElementById('containers'),\r\n+  \r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n+\r\n+const init =()=>{\r\n+  new Graph({\r\n+    containers: document.getElementById('containers'),\r\n+  }).fromJSON(rect)\r\n+}\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n-  rect()\r\n+  init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665309530274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,10 @@\n \r\n const init =()=>{\r\n   new Graph({\r\n     containers: document.getElementById('containers'),\r\n+    width:800,\r\n+    height:600\r\n   }).fromJSON(rect)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665309697924,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,8 @@\n <script setup>\r\n import { Graph, Shape } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const rect = new Shape.Rect({\r\n-  \r\n   id: 'node1',\r\n   x: 40,\r\n   y: 40,\r\n   width: 100,\r\n"
+                },
+                {
+                    "date": 1665309724708,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,17 @@\n })\r\n \r\n const init =()=>{\r\n   new Graph({\r\n+    grid: {\r\n+      size: 20,\r\n+      visible: true,\r\n+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n+      args: {\r\n+        color: '#000', // 网格线/点颜色\r\n+        thickness: 1,     // 网格线宽度/网格点大小\r\n+      },\r\n+    },\r\n     containers: document.getElementById('containers'),\r\n     width:800,\r\n     height:600\r\n   }).fromJSON(rect)\r\n"
+                },
+                {
+                    "date": 1665309763880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,7 +37,7 @@\n   }).fromJSON(rect)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n-  init()\r\n+  this.init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665363474066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n   <div class=\"third\">\r\n     <h1>you are my hero</h1>\r\n     <div>\r\n-      <div class=\"myView\" id=\"containers\"></div>\r\n+      <div class=\"myView\" id=\"container\"></div>\r\n     </div>\r\n   </div>\r\n </template>\r\n   \r\n@@ -20,9 +20,9 @@\n   zIndex: 2,\r\n })\r\n \r\n const init =()=>{\r\n-  new Graph({\r\n+  const graph = new Graph({\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n       type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n@@ -30,12 +30,13 @@\n         color: '#000', // 网格线/点颜色\r\n         thickness: 1,     // 网格线宽度/网格点大小\r\n       },\r\n     },\r\n-    containers: document.getElementById('containers'),\r\n+    container: document.getElementById('container'),\r\n     width:800,\r\n     height:600\r\n-  }).fromJSON(rect)\r\n+  })\r\n+  graph.addNode(rect)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n   this.init()\r\n"
+                },
+                {
+                    "date": 1665363510648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,7 +38,7 @@\n   graph.addNode(rect)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n-  this.init()\r\n+  init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665363665590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,14 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n+const edge = new Shape.Edge({\r\n+  id: 'edge1',\r\n+  source: rect,\r\n+  target: circle,\r\n+  zIndex: 1,\r\n+})\r\n \r\n const init =()=>{\r\n   const graph = new Graph({\r\n     grid: {\r\n@@ -34,9 +40,9 @@\n     container: document.getElementById('container'),\r\n     width:800,\r\n     height:600\r\n   })\r\n-  graph.addNode(rect)\r\n+  graph.addNode(rect,edge)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n   init()\r\n"
+                },
+                {
+                    "date": 1665363741624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n })\r\n const edge = new Shape.Edge({\r\n   id: 'edge1',\r\n   source: rect,\r\n-  target: circle,\r\n+  target: 'circle',\r\n   zIndex: 1,\r\n })\r\n \r\n const init =()=>{\r\n"
+                },
+                {
+                    "date": 1665363808255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,10 @@\n   zIndex: 2,\r\n })\r\n const edge = new Shape.Edge({\r\n   id: 'edge1',\r\n+  x:100,\r\n+  y:200,\r\n   source: rect,\r\n   target: 'circle',\r\n   zIndex: 1,\r\n })\r\n"
+                },
+                {
+                    "date": 1665363901410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,10 @@\n   x:100,\r\n   y:200,\r\n   source: rect,\r\n   target: 'circle',\r\n+  width:100,\r\n+  height:100,\r\n   zIndex: 1,\r\n })\r\n \r\n const init =()=>{\r\n"
+                },
+                {
+                    "date": 1665364017974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,19 +18,26 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n+const circle = new Shape.Circle({\r\n+  id: 'node2',\r\n+  x: 280,\r\n+  y: 200,\r\n+  width: 60,\r\n+  height: 60,\r\n+  label: 'circle', \r\n+  zIndex: 2,\r\n+})\r\n+\r\n const edge = new Shape.Edge({\r\n   id: 'edge1',\r\n-  x:100,\r\n-  y:200,\r\n   source: rect,\r\n-  target: 'circle',\r\n-  width:100,\r\n-  height:100,\r\n+  target: circle,\r\n   zIndex: 1,\r\n })\r\n \r\n+\r\n const init =()=>{\r\n   const graph = new Graph({\r\n     grid: {\r\n       size: 20,\r\n@@ -44,9 +51,11 @@\n     container: document.getElementById('container'),\r\n     width:800,\r\n     height:600\r\n   })\r\n-  graph.addNode(rect,edge)\r\n+  graph.addNode(rect)\r\n+  graph.addNode(circle)\r\n+graph.addEdge(edge)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n   init()\r\n"
+                }
+            ],
+            "date": 1665304777798,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <div class=\"third\">\r\n      <h1>This is an about page</h1>\r\n      <div id=\"container\"></div>\r\n    </div>\r\n  </template>\r\n  \r\n  <script setup>\r\n  import { onMounted } from 'vue'\r\n  import { Graph } from '@antv/x6'\r\n  // 使用 CDN 引入时暴露了 X6 全局变量\r\n  // const { Graph } = X6\r\n  const data = {\r\n    // 节点\r\n    nodes: [\r\n      {\r\n        id: 'node1', // String，可选，节点的唯一标识\r\n        x: 40, // Number，必选，节点位置的 x 值\r\n        y: 40, // Number，必选，节点位置的 y 值\r\n        width: 80, // Number，可选，节点大小的 width 值\r\n        height: 40, // Number，可选，节点大小的 height 值\r\n        label: 'hello', // String，节点标签\r\n      },\r\n      {\r\n        id: 'node2', // String，节点的唯一标识\r\n        x: 160, // Number，必选，节点位置的 x 值\r\n        y: 180, // Number，必选，节点位置的 y 值\r\n        width: 80, // Number，可选，节点大小的 width 值\r\n        height: 40, // Number，可选，节点大小的 height 值\r\n        label: 'world', // String，节点标签\r\n      },\r\n    ],\r\n    // 边\r\n    edges: [\r\n      {\r\n        source: 'node1', // String，必须，起始节点 id\r\n        target: 'node2', // String，必须，目标节点 id\r\n      },\r\n    ],\r\n  }\r\n  onMounted(() => {\r\n    const graph = new Graph({\r\n      container: document.getElementById('container'),\r\n      width: 800,\r\n      height: 600,\r\n    })\r\n    graph.fromJSON(data)\r\n  })\r\n  </script>\r\n  "
+        }
+    ]
+}

@@ -1,50 +1,63 @@
 <template>
-    <div class="about">
-      <h1>This is an about page</h1>
-      <div id="container"></div>
+  <div class="third">
+    <h1>you are my hero</h1>
+    <div>
+      <div class="myView" id="container"></div>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script setup>
-  import { onMounted } from 'vue'
-  import { Graph } from '@antv/x6'
-  // 使用 CDN 引入时暴露了 X6 全局变量
-  // const { Graph } = X6
-  const data = {
-    // 节点
-    nodes: [
-      {
-        id: 'node1', // String，可选，节点的唯一标识
-        x: 40, // Number，必选，节点位置的 x 值
-        y: 40, // Number，必选，节点位置的 y 值
-        width: 80, // Number，可选，节点大小的 width 值
-        height: 40, // Number，可选，节点大小的 height 值
-        label: 'hello', // String，节点标签
+<script setup>
+import { Graph, Shape } from '@antv/x6'
+import { onMounted } from 'vue';
+const rect = new Shape.Rect({
+  id: 'node1',
+  x: 40,
+  y: 40,
+  width: 100,
+  height: 40,
+  label: 'rect',
+  zIndex: 2,
+})
+const circle = new Shape.Circle({
+  id: 'node2',
+  x: 280,
+  y: 200,
+  width: 60,
+  height: 60,
+  label: 'circle', 
+  zIndex: 2,
+})
+
+const edge = new Shape.Edge({
+  id: 'edge1',
+  source: rect,
+  target: circle,
+  zIndex: 1,
+})
+
+
+const init =()=>{
+  const graph = new Graph({
+    grid: {
+      size: 20,
+      visible: true,
+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'
+      args: {
+        color: '#000', // 网格线/点颜色
+        thickness: 1,     // 网格线宽度/网格点大小
       },
-      {
-        id: 'node2', // String，节点的唯一标识
-        x: 160, // Number，必选，节点位置的 x 值
-        y: 180, // Number，必选，节点位置的 y 值
-        width: 80, // Number，可选，节点大小的 width 值
-        height: 40, // Number，可选，节点大小的 height 值
-        label: 'world', // String，节点标签
-      },
-    ],
-    // 边
-    edges: [
-      {
-        source: 'node1', // String，必须，起始节点 id
-        target: 'node2', // String，必须，目标节点 id
-      },
-    ],
-  }
-  onMounted(() => {
-    const graph = new Graph({
-      container: document.getElementById('container'),
-      width: 800,
-      height: 600,
-    })
-    graph.fromJSON(data)
+    },
+    container: document.getElementById('container'),
+    width:800,
+    height:600
   })
-  </script>
-  
+  graph.addNode(rect)
+  graph.addNode(circle)
+graph.addEdge(edge)
+}
+console.log(typeof(rect))
+onMounted(() => {
+  init()
+})
+</script>
