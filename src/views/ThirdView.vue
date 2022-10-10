@@ -25,7 +25,7 @@ const circle = new Shape.Circle({
   y: 200,
   width: 60,
   height: 60,
-  label: 'circle', 
+  label: 'circle',
   zIndex: 2,
 })
 
@@ -37,9 +37,9 @@ const edge = new Shape.Edge({
 })
 
 
-const init =()=>{
+const init = () => {
   const graph = new Graph({
-    panning:true,
+    panning: true,
     grid: {
       size: 20,
       visible: true,
@@ -50,59 +50,110 @@ const init =()=>{
       },
     },
     container: document.getElementById('container'),
-    width:800,
-    height:600
+    width: 800,
+    height: 600
   })
   graph.addNode(rect)
   graph.addNode(circle)
-graph.addEdge(edge)
-graph.addNode({
-  x: 60,
-  y: 60,
-  width: 160,
-  height: 80,
-  label: 'Rect With Ports',
-  ports: [
-    {
-      id: 'port1',
-      attrs: {
-        circle: {
-          r: 6,
-          magnet: true,
-          stroke: '#31d0c6',
-          strokeWidth: 2,
-          fill: '#fff',
+  graph.addEdge(edge)
+  graph.addNode({
+    x: 60,
+    y: 60,
+    width: 160,
+    height: 80,
+    label: 'Rect With Ports',
+    ports: {
+      groups: {
+        group1: {
+          attrs: {
+            circle: {
+              r: 6,
+              magnet: true,
+              stroke: '#31d0c6',
+              strokeWidth: 2,
+              fill: '#fff',
+            },
+          },
         },
       },
+      items: [
+        {
+          id: 'port1',
+          group: 'group1',
+          attrs: {
+            text: {          // 标签选择器
+              text: 'port1', // 标签文本
+            },
+          },
+        },
+        {
+          id: 'port2',
+          group: 'group1',
+          attrs: {
+            text: {          // 标签选择器
+              text: 'port2', // 标签文本
+            },
+          },
+        },
+        {
+          id: 'port3',
+          group: 'group1',
+          attrs: {
+            text: {          // 标签选择器
+              text: 'port2', // 标签文本
+            },
+          },
+        },
+      ],
     },
-    {
-      id: 'port2',
-      attrs: {
-        circle: {
-          r: 6,
-          magnet: true,
-          stroke: '#31d0c6',
-          strokeWidth: 2,
-          fill: '#fff',
+  })
+  graph.addNode({
+    x: 60,
+    y: 60,
+    width: 160,
+    height: 80,
+    label: 'Rect With Ports',
+    ports: [
+      {
+        id: 'port1',
+        attrs: {
+          circle: {
+            r: 6,
+            magnet: true,
+            stroke: '#31d0c6',
+            strokeWidth: 2,
+            fill: '#fff',
+          },
         },
       },
-    },
-    {
-      id: 'port3',
-      attrs: {
-        circle: {
-          r: 6,
-          magnet: true,
-          stroke: '#31d0c6',
-          strokeWidth: 2,
-          fill: '#fff',
+      {
+        id: 'port2',
+        attrs: {
+          circle: {
+            r: 6,
+            magnet: true,
+            stroke: '#31d0c6',
+            strokeWidth: 2,
+            fill: '#fff',
+          },
         },
       },
-    },
-  ],
-})
+      {
+        id: 'port3',
+        attrs: {
+          circle: {
+            r: 6,
+            magnet: true,
+            stroke: '#31d0c6',
+            strokeWidth: 2,
+            fill: '#fff',
+          },
+        },
+      },
+    ],
+  })
 }
-console.log(typeof(rect))
+console.log(typeof (rect))
 onMounted(() => {
   init()
 })

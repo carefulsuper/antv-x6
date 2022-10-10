@@ -1,0 +1,22 @@
+{
+    "sourceFile": "vue.config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1665383215152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665383230111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n const { defineConfig } = require('@vue/cli-service')\n module.exports = defineConfig({\n   transpileDependencies: true\n })\n-chainWebpack: config => {\n+config => {\n   const svgRule = config.module.rule(\"svg\");\n     svgRule.uses.clear();\n     svgRule\n     .use(\"svg-sprite-loader\")\n     .loader(\"svg-sprite-loader\")\n     .options({\n         symbolId: \"icon-[name]\"\n   });\n-},\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1665383215152,
+            "name": "Commit-0",
+            "content": "const { defineConfig } = require('@vue/cli-service')\nmodule.exports = defineConfig({\n  transpileDependencies: true\n})\nchainWebpack: config => {\n  const svgRule = config.module.rule(\"svg\");\n    svgRule.uses.clear();\n    svgRule\n    .use(\"svg-sprite-loader\")\n    .loader(\"svg-sprite-loader\")\n    .options({\n        symbolId: \"icon-[name]\"\n  });\n},\n"
+        }
+    ]
+}

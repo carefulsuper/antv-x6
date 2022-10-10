@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 29,
+            "activePatchIndex": 48,
             "patches": [
                 {
                     "date": 1665365798659,
@@ -124,6 +124,82 @@
                 {
                     "date": 1665369146638,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,21 +15,12 @@\n         </svg> \r\n         \r\n        \r\n     </div>\r\n-    <div>\r\n-             <svgImage></svgImage>\r\n-        </div>\r\n+    \r\n     </div>\r\n     \r\n </template>\r\n \r\n <script setup>\r\n-import {svgImage} from '../components/Image/test01.svg'\r\n-export default ({\r\n- components: {\r\n-    svgImg:svgImage\r\n-  }\r\n-})\r\n \r\n-\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665370054765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <!-- <img :src=\"imageUrl\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" /> -->\r\n+        <img :src=\"imageUrl\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381141658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img :src=\"imageUrl\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n+        <img src=\"../components/Image/test01.svg\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381324753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img src=\"../components/Image/test01.svg\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n+        <img src=\"../components/Image/test01.svg\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381380107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img src=\"../components/Image/test01.svg\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n+        <img :src=\"imageUrl\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381421759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img :src=\"imageUrl\" alt=\"\" style=\"border: 1px solid steelblue;padding: 20px;\" />\r\n+        <iframe src=\"../components/Image/test01.svg\"></iframe>\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381450203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <iframe src=\"../components/Image/test01.svg\"></iframe>\r\n+        <img src=\"../components/Image/test01.svg\"></img>\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381475624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img src=\"../components/Image/test01.svg\"></img>\r\n+        <img src=\"../components/Image/test01.svg\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n         \r\n"
+                },
+                {
+                    "date": 1665381505658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,8 @@\n         <img src=\"../components/Image/test01.svg\" />\r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n-        \r\n-       \r\n     </div>\r\n     \r\n     </div>\r\n     \r\n"
+                },
+                {
+                    "date": 1665381619546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,14 @@\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n        \r\n-        <img src=\"../components/Image/test01.svg\" />\r\n+     \r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-    \r\n+       <img src=\"../components/Image/test01.svg\" />\r\n     </div>\r\n     \r\n </template>\r\n \r\n"
+                },
+                {
+                    "date": 1665381819433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,8 @@\n         <svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\r\n             <polyline points=\"0,40 40,40 40,80 80,80 80,120 120,120 120,160\"\r\n                 style=\"fill:white;stroke:red;stroke-width:4\" />\r\n         </svg>\r\n-       \r\n-     \r\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n"
+                },
+                {
+                    "date": 1665381860702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,8 @@\n         </svg> \r\n     </div>\r\n        <img src=\"../components/Image/test01.svg\" />\r\n     </div>\r\n-    \r\n </template>\r\n-\r\n <script setup>\r\n \r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665381984726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <img src=\"../components/Image/test01.svg\" />\r\n+       <div style=\"background:'../components/Image/test01.svg'\" />\r\n     </div>\r\n </template>\r\n <script setup>\r\n \r\n"
+                },
+                {
+                    "date": 1665382015756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <div style=\"background:'../components/Image/test01.svg'\" />\r\n+       <div style=\"background:'../components/Image/test01.svg'\" >123243refdc xbn</div>\r\n     </div>\r\n </template>\r\n <script setup>\r\n \r\n"
+                },
+                {
+                    "date": 1665382037650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <div style=\"background:'../components/Image/test01.svg'\" >123243refdc xbn</div>\r\n+       <div style=\"background:'../components/Image/test01.svg';width: 100px;height: 200px;\" ></div>\r\n     </div>\r\n </template>\r\n <script setup>\r\n \r\n"
+                },
+                {
+                    "date": 1665382436373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <div style=\"background:'../components/Image/test01.svg';width: 100px;height: 200px;\" ></div>\r\n+       <iframe src=\"../components/Image/test01.svg\" />\r\n     </div>\r\n </template>\r\n <script setup>\r\n \r\n"
+                },
+                {
+                    "date": 1665382455481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <iframe src=\"../components/Image/test01.svg\" />\r\n+       <iframe src=\"test01.svg\" />\r\n     </div>\r\n </template>\r\n <script setup>\r\n \r\n"
+                },
+                {
+                    "date": 1665382496063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,5 @@\n        <iframe src=\"test01.svg\" />\r\n     </div>\r\n </template>\r\n <script setup>\r\n-\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665382532416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <iframe src=\"test01.svg\" />\r\n+       <object data=\"test01.svg\" type=\"image/svg+xml\"></object>\r\n     </div>\r\n </template>\r\n <script setup>\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665391981388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,10 @@\n         <svg height=\"210\" width=\"500\">\r\n             <polygon points=\"200,10 250,190 160,210\" style=\"fill:lime;stroke:purple;stroke-width:1\" />\r\n         </svg> \r\n     </div>\r\n-       <object data=\"test01.svg\" type=\"image/svg+xml\"></object>\r\n+       <!-- <object data=\"test01.svg\" type=\"image/svg+xml\"></object> -->\r\n+       <iframe src=\"../components/Image/test01.svg\"></iframe>\r\n     </div>\r\n </template>\r\n <script setup>\r\n </script>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1665365798659,
