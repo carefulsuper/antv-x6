@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/components/Image/test01.svg",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1665366250730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665366709320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,6 @@\n <to>George</to>\r\n <from>John</from>\r\n <heading>Reminder</heading>\r\n <body>Don't forget the meeting!</body>\r\n-</note>\n\\ No newline at end of file\n+</note>\r\n+</xml>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665366724023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,4 @@\n-<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n-<note>\r\n-<to>George</to>\r\n-<from>John</from>\r\n-<heading>Reminder</heading>\r\n-<body>Don't forget the meeting!</body>\r\n-</note>\r\n-</xml>\n\\ No newline at end of file\n+<svg  height=\"210\" width=\"500\">\r\n+  <polygon points=\"200,10 250,190 160,210\"\r\n+  style=\"fill:lime;stroke:purple;stroke-width:1\"/>\r\n+</svg>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665366794368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+<?xml version=\"1.0\" encoding=\"UTF-8\">\r\n <svg  height=\"210\" width=\"500\">\r\n   <polygon points=\"200,10 250,190 160,210\"\r\n   style=\"fill:lime;stroke:purple;stroke-width:1\"/>\r\n </svg>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665367072061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-<?xml version=\"1.0\" encoding=\"UTF-8\">\r\n+<!-- <?xml version=\"1.0\" encoding=\"UTF-8\"> -->\r\n <svg  height=\"210\" width=\"500\">\r\n   <polygon points=\"200,10 250,190 160,210\"\r\n   style=\"fill:lime;stroke:purple;stroke-width:1\"/>\r\n </svg>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665367693829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-<!-- <?xml version=\"1.0\" encoding=\"UTF-8\"> -->\r\n+<?xml version=\"1.0\" encoding=\"UTF-8\">\r\n <svg  height=\"210\" width=\"500\">\r\n   <polygon points=\"200,10 250,190 160,210\"\r\n   style=\"fill:lime;stroke:purple;stroke-width:1\"/>\r\n </svg>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1665366250730,
+            "name": "Commit-0",
+            "content": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<note>\r\n<to>George</to>\r\n<from>John</from>\r\n<heading>Reminder</heading>\r\n<body>Don't forget the meeting!</body>\r\n</note>"
+        }
+    ]
+}

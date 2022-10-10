@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1665304881127,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665365849755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,16 @@\n     // route level code-splitting\n     // this generates a separate chunk (about.[hash].js) for this route\n     // which is lazy-loaded when the route is visited.\n     component: () => import(/* webpackChunkName: \"about\" */ '../views/ThirdView.vue')\n+  },\n+  {\n+    path: '/svg',\n+    name: 'svg',\n+    // route level code-splitting\n+    // this generates a separate chunk (about.[hash].js) for this route\n+    // which is lazy-loaded when the route is visited.\n+    component: () => import(/* webpackChunkName: \"about\" */ '../views/SvgView.vue')\n   }\n ]\n \n const router = new VueRouter({\n"
                 }
             ],
             "date": 1665304881127,

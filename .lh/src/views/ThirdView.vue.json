@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 62,
+            "activePatchIndex": 64,
             "patches": [
                 {
                     "date": 1665304777798,
@@ -256,6 +256,14 @@
                 {
                     "date": 1665364017974,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,19 +18,26 @@\n   height: 40,\r\n   label: 'rect',\r\n   zIndex: 2,\r\n })\r\n+const circle = new Shape.Circle({\r\n+  id: 'node2',\r\n+  x: 280,\r\n+  y: 200,\r\n+  width: 60,\r\n+  height: 60,\r\n+  label: 'circle', \r\n+  zIndex: 2,\r\n+})\r\n+\r\n const edge = new Shape.Edge({\r\n   id: 'edge1',\r\n-  x:100,\r\n-  y:200,\r\n   source: rect,\r\n-  target: 'circle',\r\n-  width:100,\r\n-  height:100,\r\n+  target: circle,\r\n   zIndex: 1,\r\n })\r\n \r\n+\r\n const init =()=>{\r\n   const graph = new Graph({\r\n     grid: {\r\n       size: 20,\r\n@@ -44,9 +51,11 @@\n     container: document.getElementById('container'),\r\n     width:800,\r\n     height:600\r\n   })\r\n-  graph.addNode(rect,edge)\r\n+  graph.addNode(rect)\r\n+  graph.addNode(circle)\r\n+graph.addEdge(edge)\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n   init()\r\n"
+                },
+                {
+                    "date": 1665364923285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,8 +54,53 @@\n   })\r\n   graph.addNode(rect)\r\n   graph.addNode(circle)\r\n graph.addEdge(edge)\r\n+graph.addNode({\r\n+  x: 60,\r\n+  y: 60,\r\n+  width: 160,\r\n+  height: 80,\r\n+  label: 'Rect With Ports',\r\n+  ports: [\r\n+    {\r\n+      id: 'port1',\r\n+      attrs: {\r\n+        circle: {\r\n+          r: 6,\r\n+          magnet: true,\r\n+          stroke: '#31d0c6',\r\n+          strokeWidth: 2,\r\n+          fill: '#fff',\r\n+        },\r\n+      },\r\n+    },\r\n+    {\r\n+      id: 'port2',\r\n+      attrs: {\r\n+        circle: {\r\n+          r: 6,\r\n+          magnet: true,\r\n+          stroke: '#31d0c6',\r\n+          strokeWidth: 2,\r\n+          fill: '#fff',\r\n+        },\r\n+      },\r\n+    },\r\n+    {\r\n+      id: 'port3',\r\n+      attrs: {\r\n+        circle: {\r\n+          r: 6,\r\n+          magnet: true,\r\n+          stroke: '#31d0c6',\r\n+          strokeWidth: 2,\r\n+          fill: '#fff',\r\n+        },\r\n+      },\r\n+    },\r\n+  ],\r\n+})\r\n }\r\n console.log(typeof(rect))\r\n onMounted(() => {\r\n   init()\r\n"
+                },
+                {
+                    "date": 1665365002325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n \r\n \r\n const init =()=>{\r\n   const graph = new Graph({\r\n+    panning:true,\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n       type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n"
                 }
             ],
             "date": 1665304777798,

@@ -39,6 +39,7 @@ const edge = new Shape.Edge({
 
 const init =()=>{
   const graph = new Graph({
+    panning:true,
     grid: {
       size: 20,
       visible: true,
@@ -55,6 +56,51 @@ const init =()=>{
   graph.addNode(rect)
   graph.addNode(circle)
 graph.addEdge(edge)
+graph.addNode({
+  x: 60,
+  y: 60,
+  width: 160,
+  height: 80,
+  label: 'Rect With Ports',
+  ports: [
+    {
+      id: 'port1',
+      attrs: {
+        circle: {
+          r: 6,
+          magnet: true,
+          stroke: '#31d0c6',
+          strokeWidth: 2,
+          fill: '#fff',
+        },
+      },
+    },
+    {
+      id: 'port2',
+      attrs: {
+        circle: {
+          r: 6,
+          magnet: true,
+          stroke: '#31d0c6',
+          strokeWidth: 2,
+          fill: '#fff',
+        },
+      },
+    },
+    {
+      id: 'port3',
+      attrs: {
+        circle: {
+          r: 6,
+          magnet: true,
+          stroke: '#31d0c6',
+          strokeWidth: 2,
+          fill: '#fff',
+        },
+      },
+    },
+  ],
+})
 }
 console.log(typeof(rect))
 onMounted(() => {
