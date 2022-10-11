@@ -1,0 +1,366 @@
+{
+    "sourceFile": "src/views/GroupView.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 87,
+            "patches": [
+                {
+                    "date": 1665456327123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1665456425321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,9 @@\n <template>\r\n     <div class=\"group\">\r\n         <h1>Group</h1>\r\n     </div>\r\n-</template>\n\\ No newline at end of file\n+</template>\r\n+\r\n+<script setup>\r\n+\r\n+</script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665456639799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,43 @@\n <template>\r\n     <div class=\"group\">\r\n         <h1>Group</h1>\r\n+    \r\n+    <div>\r\n+        <div id=\"container\"></div>\r\n     </div>\r\n+    </div>\r\n </template>\r\n \r\n <script setup>\r\n+import {Graph} from '@antv/x6'\r\n+const child = graph.addNode({\r\n+  x: 120,\r\n+  y: 80,\r\n+  width: 120,\r\n+  height: 60,\r\n+  zIndex: 10,\r\n+  label: 'Child\\n(embedded)',\r\n+  attrs: {\r\n+    body: {\r\n+      fill: 'green',\r\n+    },\r\n+    label: {\r\n+      fill: '#fff',\r\n+    },\r\n+  },\r\n+})\r\n \r\n+const parent = graph.addNode({\r\n+  x: 80,\r\n+  y: 40,\r\n+  width: 320,\r\n+  height: 240,\r\n+  zIndex: 1,\r\n+  label: 'Parent\\n(try to move me)',\r\n+})\r\n+const init = () =>{\r\n+    const graph = new Graph({\r\n+\r\n+    })\r\n+}\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665456864657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,10 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph} from '@antv/x6'\r\n+import {Graph,graph} from '@antv/x6'\r\n+import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n@@ -36,8 +37,25 @@\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n     const graph = new Graph({\r\n+        container:document.getElementById('container'),\r\n \r\n     })\r\n-}\r\n+    parent.addChild(child)\r\n+    parent.addChild(source)\r\n+parent.addChild(target)\r\n+\r\n+graph.addEdge({\r\n+  source,\r\n+  target,\r\n+  vertices: [\r\n+    { x: 120, y: 60 },\r\n+    { x: 200, y: 100 },\r\n+  ],\r\n+})\r\n+  \r\n+}  \r\n+onMounted(()=>{\r\n+    init()\r\n+})\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665456945210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph} from '@antv/x6'\r\n+import {Graph,graph,source,target} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665456984655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph,source,target} from '@antv/x6'\r\n+import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665457035199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph} from '@antv/x6'\r\n+import {Graph,graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const child = graph.addNode({\r\n+const child =graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n"
+                },
+                {
+                    "date": 1665457195685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph} from '@antv/x6'\r\n+import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const child =graph.addNode({\r\n+const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n@@ -41,20 +41,8 @@\n         container:document.getElementById('container'),\r\n \r\n     })\r\n     parent.addChild(child)\r\n-    parent.addChild(source)\r\n-parent.addChild(target)\r\n-\r\n-graph.addEdge({\r\n-  source,\r\n-  target,\r\n-  vertices: [\r\n-    { x: 120, y: 60 },\r\n-    { x: 200, y: 100 },\r\n-  ],\r\n-})\r\n-  \r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665457210699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph} from '@antv/x6'\r\n+import {Graph,graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665457221995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n-    const graph = new Graph({\r\n+   new Graph({\r\n         container:document.getElementById('container'),\r\n \r\n     })\r\n     parent.addChild(child)\r\n"
+                },
+                {
+                    "date": 1665457312975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n const init = () =>{\r\n    new Graph({\r\n         container:document.getElementById('container'),\r\n \r\n-    })\r\n+    }).fromJSON(parent,child)\r\n     parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665457347529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph} from '@antv/x6'\r\n+import {Graph,graph,addNode} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665457357471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph,addNode} from '@antv/x6'\r\n+import {Graph,graph,addChild} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665457365763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph,graph,addChild} from '@antv/x6'\r\n+import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n"
+                },
+                {
+                    "date": 1665457417681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n+// eslint-disable-next-line no-undef\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n@@ -27,8 +28,9 @@\n     },\r\n   },\r\n })\r\n \r\n+// eslint-disable-next-line no-undef\r\n const parent = graph.addNode({\r\n   x: 80,\r\n   y: 40,\r\n   width: 320,\r\n"
+                },
+                {
+                    "date": 1665457522971,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,8 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-// eslint-disable-next-line no-undef\r\n const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n@@ -28,9 +27,8 @@\n     },\r\n   },\r\n })\r\n \r\n-// eslint-disable-next-line no-undef\r\n const parent = graph.addNode({\r\n   x: 80,\r\n   y: 40,\r\n   width: 320,\r\n"
+                },
+                {
+                    "date": 1665457547195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n const init = () =>{\r\n    new Graph({\r\n         container:document.getElementById('container'),\r\n \r\n-    }).fromJSON(parent,child)\r\n+    })\r\n     parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665457553069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n const init = () =>{\r\n    new Graph({\r\n         container:document.getElementById('container'),\r\n \r\n-    })\r\n+    }).fromJSON(parent,child)\r\n     parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665457729091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,12 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const child = graph.addNode({\r\n+const init = () =>{\r\n+    new Graph({\r\n+        container:document.getElementById('container'),\r\n+        const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n@@ -35,13 +38,10 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n-const init = () =>{\r\n-   new Graph({\r\n-        container:document.getElementById('container'),\r\n-\r\n-    }).fromJSON(parent,child)\r\n+    })\r\n+    \r\n     parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665457903119,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,12 +10,9 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const init = () =>{\r\n-    new Graph({\r\n-        container:document.getElementById('container'),\r\n-        const child = graph.addNode({\r\n+const child = graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n@@ -38,11 +35,25 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n-    })\r\n-    \r\n-    parent.addChild(child)\r\n+const init = () =>{\r\n+    parent.addNode(child)\r\n+    const graph = new Graph({\r\n+    panning: true,\r\n+    grid: {\r\n+      size: 20,\r\n+      visible: true,\r\n+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n+      args: {\r\n+        color: '#000', // 网格线/点颜色\r\n+        thickness: 1,     // 网格线宽度/网格点大小\r\n+      },\r\n+    },\r\n+    container: document.getElementById('container'),\r\n+    width: 800,\r\n+    height: 600\r\n+  }).fromJSON(parent,child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665458005058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n-    parent.addNode(child)\r\n+    parent.addChild(child)\r\n     const graph = new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n@@ -51,9 +51,9 @@\n     },\r\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n-  }).fromJSON(parent,child)\r\n+  })\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665458132934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n     parent.addChild(child)\r\n-    const graph = new Graph({\r\n+    new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n"
+                },
+                {
+                    "date": 1665458458329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,10 +36,10 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n-    parent.addChild(child)\r\n-    new Graph({\r\n+    graph.addNode(child)\r\n+    const graph =new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n"
+                },
+                {
+                    "date": 1665458484916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n   label: 'Parent\\n(try to move me)',\r\n })\r\n const init = () =>{\r\n     graph.addNode(child)\r\n+    graph.addNode(parent)\r\n     const graph =new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n"
+                },
+                {
+                    "date": 1665458505618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const child = graph.addNode({\r\n+const child =graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n"
+                },
+                {
+                    "date": 1665458670264,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n })\r\n const init = () =>{\r\n     graph.addNode(child)\r\n     graph.addNode(parent)\r\n+    parent.addChild(child)\r\n     const graph =new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n"
+                },
+                {
+                    "date": 1665459118312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,28 @@\n \r\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const child =graph.addNode({\r\n+const init = () =>{\r\n+    graph.addNode(child)\r\n+    graph.addNode(parent)\r\n+    parent.addChild(child)\r\n+    const graph =new Graph({\r\n+    panning: true,\r\n+    grid: {\r\n+      size: 20,\r\n+      visible: true,\r\n+      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n+      args: {\r\n+        color: '#000', // 网格线/点颜色\r\n+        thickness: 1,     // 网格线宽度/网格点大小\r\n+      },\r\n+    },\r\n+    container: document.getElementById('container'),\r\n+    width: 800,\r\n+    height: 600\r\n+  })\r\n+  const child =graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n   height: 60,\r\n@@ -35,27 +54,8 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n-const init = () =>{\r\n-    graph.addNode(child)\r\n-    graph.addNode(parent)\r\n-    parent.addChild(child)\r\n-    const graph =new Graph({\r\n-    panning: true,\r\n-    grid: {\r\n-      size: 20,\r\n-      visible: true,\r\n-      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n-      args: {\r\n-        color: '#000', // 网格线/点颜色\r\n-        thickness: 1,     // 网格线宽度/网格点大小\r\n-      },\r\n-    },\r\n-    container: document.getElementById('container'),\r\n-    width: 800,\r\n-    height: 600\r\n-  })\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665459167323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,8 @@\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () =>{\r\n-    graph.addNode(child)\r\n-    graph.addNode(parent)\r\n-    parent.addChild(child)\r\n     const graph =new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n@@ -54,8 +51,11 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n+graph.addNode(child)\r\n+    graph.addNode(parent)\r\n+    parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665459190570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,11 +51,9 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n-graph.addNode(child)\r\n-    graph.addNode(parent)\r\n-    parent.addChild(child)\r\n+parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665459229760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,34 +26,34 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   })\r\n-  const child =graph.addNode({\r\n-  x: 120,\r\n-  y: 80,\r\n-  width: 120,\r\n-  height: 60,\r\n-  zIndex: 10,\r\n-  label: 'Child\\n(embedded)',\r\n-  attrs: {\r\n-    body: {\r\n-      fill: 'green',\r\n-    },\r\n-    label: {\r\n-      fill: '#fff',\r\n-    },\r\n-  },\r\n-})\r\n+//   const child =graph.addNode({\r\n+//   x: 120,\r\n+//   y: 80,\r\n+//   width: 120,\r\n+//   height: 60,\r\n+//   zIndex: 10,\r\n+//   label: 'Child\\n(embedded)',\r\n+//   attrs: {\r\n+//     body: {\r\n+//       fill: 'green',\r\n+//     },\r\n+//     label: {\r\n+//       fill: '#fff',\r\n+//     },\r\n+//   },\r\n+// })\r\n \r\n-const parent = graph.addNode({\r\n-  x: 80,\r\n-  y: 40,\r\n-  width: 320,\r\n-  height: 240,\r\n-  zIndex: 1,\r\n-  label: 'Parent\\n(try to move me)',\r\n-})\r\n-parent.addChild(child)\r\n+// const parent = graph.addNode({\r\n+//   x: 80,\r\n+//   y: 40,\r\n+//   width: 320,\r\n+//   height: 240,\r\n+//   zIndex: 1,\r\n+//   label: 'Parent\\n(try to move me)',\r\n+// })\r\n+// parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665459237375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () =>{\r\n-    const graph =new Graph({\r\n+    new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n"
+                },
+                {
+                    "date": 1665459289464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,34 +26,34 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   })\r\n-//   const child =graph.addNode({\r\n-//   x: 120,\r\n-//   y: 80,\r\n-//   width: 120,\r\n-//   height: 60,\r\n-//   zIndex: 10,\r\n-//   label: 'Child\\n(embedded)',\r\n-//   attrs: {\r\n-//     body: {\r\n-//       fill: 'green',\r\n-//     },\r\n-//     label: {\r\n-//       fill: '#fff',\r\n-//     },\r\n-//   },\r\n-// })\r\n+  const child =graph.addNode({\r\n+  x: 120,\r\n+  y: 80,\r\n+  width: 120,\r\n+  height: 60,\r\n+  zIndex: 10,\r\n+  label: 'Child\\n(embedded)',\r\n+  attrs: {\r\n+    body: {\r\n+      fill: 'green',\r\n+    },\r\n+    label: {\r\n+      fill: '#fff',\r\n+    },\r\n+  },\r\n+})\r\n \r\n-// const parent = graph.addNode({\r\n-//   x: 80,\r\n-//   y: 40,\r\n-//   width: 320,\r\n-//   height: 240,\r\n-//   zIndex: 1,\r\n-//   label: 'Parent\\n(try to move me)',\r\n-// })\r\n-// parent.addChild(child)\r\n+const parent = graph.addNode({\r\n+  x: 80,\r\n+  y: 40,\r\n+  width: 320,\r\n+  height: 240,\r\n+  zIndex: 1,\r\n+  label: 'Parent\\n(try to move me)',\r\n+})\r\n+parent.addChild(child)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665459303820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n <script setup>\r\n import {Graph} from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () =>{\r\n-    new Graph({\r\n+    const graph=new Graph({\r\n     panning: true,\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n"
+                },
+                {
+                    "date": 1665467819272,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n <template>\r\n     <div class=\"group\">\r\n         <h1>Group</h1>\r\n-    \r\n     <div>\r\n         <div id=\"container\"></div>\r\n     </div>\r\n     </div>\r\n@@ -26,8 +25,17 @@\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n   })\r\n+\r\n+graph.addEdge({\r\n+  source,\r\n+  target,\r\n+  vertices: [\r\n+    { x: 120, y: 60 },\r\n+    { x: 200, y: 100 },\r\n+  ],\r\n+})\r\n   const child =graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n@@ -52,8 +60,10 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n parent.addChild(child)\r\n+parent.addChild(source)\r\n+parent.addChild(target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665468329293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,18 +24,11 @@\n     },\r\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n+   \r\n   })\r\n \r\n-graph.addEdge({\r\n-  source,\r\n-  target,\r\n-  vertices: [\r\n-    { x: 120, y: 60 },\r\n-    { x: 200, y: 100 },\r\n-  ],\r\n-})\r\n   const child =graph.addNode({\r\n   x: 120,\r\n   y: 80,\r\n   width: 120,\r\n@@ -59,11 +52,17 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n+\r\n+const edge = graph.addEdge({\r\n+  vertices: [\r\n+    { x: 120, y: 60 },\r\n+    { x: 200, y: 100 },\r\n+  ],\r\n+})\r\n parent.addChild(child)\r\n-parent.addChild(source)\r\n-parent.addChild(target)\r\n+parent.addChild(edge)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665468357587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,16 +53,19 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n \r\n-const edge = graph.addEdge({\r\n+graph.addEdge({\r\n+  source,\r\n+  target,\r\n   vertices: [\r\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n parent.addChild(child)\r\n-parent.addChild(edge)\r\n+parent.addChild(source)\r\n+parent.addChild(target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665468400196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,11 +61,9 @@\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n-parent.addChild(child)\r\n-parent.addChild(source)\r\n-parent.addChild(target)\r\n+parent.addChild(child,source,target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665468556273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,15 +54,18 @@\n   label: 'Parent\\n(try to move me)',\r\n })\r\n \r\n graph.addEdge({\r\n+  // eslint-disable-next-line no-undef\r\n   source,\r\n+  // eslint-disable-next-line no-undef\r\n   target,\r\n   vertices: [\r\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n+// eslint-disable-next-line no-undef\r\n parent.addChild(child,source,target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665468570355,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,18 +54,15 @@\n   label: 'Parent\\n(try to move me)',\r\n })\r\n \r\n graph.addEdge({\r\n-  // eslint-disable-next-line no-undef\r\n   source,\r\n-  // eslint-disable-next-line no-undef\r\n   target,\r\n   vertices: [\r\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n-// eslint-disable-next-line no-undef\r\n parent.addChild(child,source,target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665468815305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     </div>\r\n </template>\r\n \r\n <script setup>\r\n-import {Graph} from '@antv/x6'\r\n+import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () =>{\r\n     const graph=new Graph({\r\n     panning: true,\r\n@@ -61,9 +61,11 @@\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n-parent.addChild(child,source,target)\r\n+parent.addChild(child)\r\n+parent.addChild(source)\r\n+parent.addChild(target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665468913625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,16 +53,20 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n \r\n-graph.addEdge({\r\n-  source,\r\n-  target,\r\n+const source=graph.addEdge({\r\n   vertices: [\r\n     { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n+const target=graph.addEdge({\r\n+  vertices: [\r\n+    { x: 120, y: 60 },\r\n+    { x: 200, y: 100 },\r\n+  ],\r\n+})\r\n parent.addChild(child)\r\n parent.addChild(source)\r\n parent.addChild(target)\r\n }  \r\n"
+                },
+                {
+                    "date": 1665468947563,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,14 +56,12 @@\n \r\n const source=graph.addEdge({\r\n   vertices: [\r\n     { x: 120, y: 60 },\r\n-    { x: 200, y: 100 },\r\n   ],\r\n })\r\n const target=graph.addEdge({\r\n   vertices: [\r\n-    { x: 120, y: 60 },\r\n     { x: 200, y: 100 },\r\n   ],\r\n })\r\n parent.addChild(child)\r\n"
+                },
+                {
+                    "date": 1665469181224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,19 +52,8 @@\n   height: 240,\r\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n-\r\n-const source=graph.addEdge({\r\n-  vertices: [\r\n-    { x: 120, y: 60 },\r\n-  ],\r\n-})\r\n-const target=graph.addEdge({\r\n-  vertices: [\r\n-    { x: 200, y: 100 },\r\n-  ],\r\n-})\r\n parent.addChild(child)\r\n parent.addChild(source)\r\n parent.addChild(target)\r\n }  \r\n"
+                },
+                {
+                    "date": 1665469306782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,23 @@\n import { onMounted } from 'vue';\r\n const init = () =>{\r\n     const graph=new Graph({\r\n     panning: true,\r\n+    embedding: {\r\n+    enabled: true,\r\n+    findParent({ node }) {\r\n+      const bbox = node.getBBox()\r\n+      return this.getNodes().filter((node) => {\r\n+        // 只有 data.parent 为 true 的节点才是父节点\r\n+        const data = node.getData<any>()\r\n+        if (data && data.parent) {\r\n+          const targetBBox = node.getBBox()\r\n+          return bbox.isIntersectWithRect(targetBBox)\r\n+        }\r\n+        return false\r\n+      })\r\n+    }\r\n+  }\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n       type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n@@ -24,9 +39,8 @@\n     },\r\n     container: document.getElementById('container'),\r\n     width: 800,\r\n     height: 600\r\n-   \r\n   })\r\n \r\n   const child =graph.addNode({\r\n   x: 120,\r\n@@ -53,10 +67,8 @@\n   zIndex: 1,\r\n   label: 'Parent\\n(try to move me)',\r\n })\r\n parent.addChild(child)\r\n-parent.addChild(source)\r\n-parent.addChild(target)\r\n }  \r\n onMounted(()=>{\r\n     init()\r\n })\r\n"
+                },
+                {
+                    "date": 1665469314408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n         }\r\n         return false\r\n       })\r\n     }\r\n-  }\r\n+  },\r\n     grid: {\r\n       size: 20,\r\n       visible: true,\r\n       type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n"
+                },
+                {
+                    "date": 1665469331525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n         // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData<any>()\r\n+        const data = node.getData()\r\n         if (data && data.parent) {\r\n           const targetBBox = node.getBBox()\r\n           return bbox.isIntersectWithRect(targetBBox)\r\n         }\r\n"
+                },
+                {
+                    "date": 1665469807457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,75 +1,60 @@\n <template>\r\n     <div class=\"group\">\r\n         <h1>Group</h1>\r\n-    <div>\r\n-        <div id=\"container\"></div>\r\n+        <div>\r\n+            <div id=\"container\"></div>\r\n+        </div>\r\n     </div>\r\n-    </div>\r\n </template>\r\n \r\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n-const init = () =>{\r\n-    const graph=new Graph({\r\n-    panning: true,\r\n-    embedding: {\r\n-    enabled: true,\r\n-    findParent({ node }) {\r\n-      const bbox = node.getBBox()\r\n-      return this.getNodes().filter((node) => {\r\n-        // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData()\r\n-        if (data && data.parent) {\r\n-          const targetBBox = node.getBBox()\r\n-          return bbox.isIntersectWithRect(targetBBox)\r\n-        }\r\n-        return false\r\n-      })\r\n-    }\r\n-  },\r\n-    grid: {\r\n-      size: 20,\r\n-      visible: true,\r\n-      type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n-      args: {\r\n-        color: '#000', // 网格线/点颜色\r\n-        thickness: 1,     // 网格线宽度/网格点大小\r\n-      },\r\n-    },\r\n-    container: document.getElementById('container'),\r\n-    width: 800,\r\n-    height: 600\r\n-  })\r\n+const init = () => {\r\n+    const graph = new Graph({\r\n+        panning: true,\r\n+        grid: {\r\n+            size: 20,\r\n+            visible: true,\r\n+            type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'\r\n+            args: {\r\n+                color: '#000', // 网格线/点颜色\r\n+                thickness: 1,     // 网格线宽度/网格点大小\r\n+            },\r\n+        },\r\n+        container: document.getElementById('container'),\r\n+        width: 800,\r\n+        height: 600\r\n+    })\r\n \r\n-  const child =graph.addNode({\r\n-  x: 120,\r\n-  y: 80,\r\n-  width: 120,\r\n-  height: 60,\r\n-  zIndex: 10,\r\n-  label: 'Child\\n(embedded)',\r\n-  attrs: {\r\n-    body: {\r\n-      fill: 'green',\r\n-    },\r\n-    label: {\r\n-      fill: '#fff',\r\n-    },\r\n-  },\r\n-})\r\n+    const child = graph.addNode({\r\n+        x: 120,\r\n+        y: 80,\r\n+        width: 120,\r\n+        height: 60,\r\n+        zIndex: 10,\r\n+        label: 'Child\\n(embedded)',\r\n+        attrs: {\r\n+            body: {\r\n+                fill: 'green',\r\n+            },\r\n+            label: {\r\n+                fill: '#fff',\r\n+            },\r\n+        },\r\n+    })\r\n \r\n-const parent = graph.addNode({\r\n-  x: 80,\r\n-  y: 40,\r\n-  width: 320,\r\n-  height: 240,\r\n-  zIndex: 1,\r\n-  label: 'Parent\\n(try to move me)',\r\n-})\r\n-parent.addChild(child)\r\n-}  \r\n-onMounted(()=>{\r\n+    const parent = graph.addNode({\r\n+        x: 80,\r\n+        y: 40,\r\n+        width: 320,\r\n+        height: 240,\r\n+        zIndex: 1,\r\n+        label: 'Parent\\n(try to move me)',\r\n+    })\r\n+    parent.addChild(child)\r\n+}\r\n+onMounted(() => {\r\n     init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665469816864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,26 @@\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n+    new Graph({\r\n+  embedding: {\r\n+    enabled: true,\r\n+    findParent({ node }) {\r\n+      const bbox = node.getBBox()\r\n+      return this.getNodes().filter((node) => {\r\n+        // 只有 data.parent 为 true 的节点才是父节点\r\n+        const data = node.getData<any>()\r\n+        if (data && data.parent) {\r\n+          const targetBBox = node.getBBox()\r\n+          return bbox.isIntersectWithRect(targetBBox)\r\n+        }\r\n+        return false\r\n+      })\r\n+    }\r\n+  }\r\n+})\r\n+\r\n     const graph = new Graph({\r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n"
+                },
+                {
+                    "date": 1665469825987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n         // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData<any>()\r\n+        const data = node.getData()\r\n         if (data && data.parent) {\r\n           const targetBBox = node.getBBox()\r\n           return bbox.isIntersectWithRect(targetBBox)\r\n         }\r\n"
+                },
+                {
+                    "date": 1665469876687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,27 +10,24 @@\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n-    new Graph({\r\n-  embedding: {\r\n+    const graph = new Graph({\r\n+    embedding: {\r\n     enabled: true,\r\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n         // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData()\r\n+        const data = node.getData<any>()\r\n         if (data && data.parent) {\r\n           const targetBBox = node.getBBox()\r\n           return bbox.isIntersectWithRect(targetBBox)\r\n         }\r\n         return false\r\n       })\r\n     }\r\n-  }\r\n-})\r\n-\r\n-    const graph = new Graph({\r\n+  },\r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n             visible: true,\r\n"
+                },
+                {
+                    "date": 1665469889476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n         // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData<any>()\r\n+        const data = node.getData()\r\n         if (data && data.parent) {\r\n           const targetBBox = node.getBBox()\r\n           return bbox.isIntersectWithRect(targetBBox)\r\n         }\r\n"
+                },
+                {
+                    "date": 1665469934947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,23 +11,8 @@\n import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n-    embedding: {\r\n-    enabled: true,\r\n-    findParent({ node }) {\r\n-      const bbox = node.getBBox()\r\n-      return this.getNodes().filter((node) => {\r\n-        // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData()\r\n-        if (data && data.parent) {\r\n-          const targetBBox = node.getBBox()\r\n-          return bbox.isIntersectWithRect(targetBBox)\r\n-        }\r\n-        return false\r\n-      })\r\n-    }\r\n-  },\r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n             visible: true,\r\n"
+                },
+                {
+                    "date": 1665470197992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,18 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-\r\n+    graph.addEdge({\r\n+        source,\r\n+        target,\r\n+        vertices: [\r\n+            { x: 120, y: 60 },\r\n+            { x: 200, y: 100 },\r\n+        ],\r\n+    })\r\n+    parent.addChild(source)\r\n+    parent.addChild(target)\r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n         width: 320,\r\n"
+                },
+                {
+                    "date": 1665470680665,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,17 +43,16 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source,\r\n-        target,\r\n+        source: source,\r\n+        target: target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n     })\r\n-    parent.addChild(source)\r\n-    parent.addChild(target)\r\n+\r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n         width: 320,\r\n@@ -61,9 +60,13 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n+    parent.addChild(source)\r\n+    parent.addChild(target)\r\n+    \r\n }\r\n+\r\n onMounted(() => {\r\n     init()\r\n })\r\n </script>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1665470691373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source: source,\r\n-        target: target,\r\n+        source: 'source',\r\n+        target: 'target',\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665470813988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source: 'source',\r\n-        target: 'target',\r\n+        source,\r\n+        target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665474810758,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n     })\r\n     parent.addChild(child)\r\n     parent.addChild(source)\r\n     parent.addChild(target)\r\n-    \r\n+      \r\n }\r\n \r\n onMounted(() => {\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665475512046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source,\r\n-        target,\r\n+        source:'source',\r\n+        target:'target',\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n@@ -60,10 +60,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    parent.addChild(source)\r\n-    parent.addChild(target)\r\n+    parent.addChild('source')\r\n+    parent.addChild('target')\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665475615992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source:'source',\r\n-        target:'target',\r\n+        source,\r\n+        target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n@@ -60,10 +60,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    parent.addChild('source')\r\n-    parent.addChild('target')\r\n+    parent.addChild(source)\r\n+    parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665475641937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,10 @@\n </template>\r\n \r\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n+import { rect } from '@antv/x6/lib/registry/connection-point/rect';\r\n+import { circle } from '@antv/x6/lib/registry/marker/circle';\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         panning: true,\r\n@@ -43,10 +45,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source,\r\n-        target,\r\n+        source: rect,\r\n+        target: circle,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665475664856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,9 +46,9 @@\n         },\r\n     })\r\n     graph.addEdge({\r\n         source: rect,\r\n-        target: circle,\r\n+        target: rect,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665475675905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,8 @@\n \r\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n import { rect } from '@antv/x6/lib/registry/connection-point/rect';\r\n-import { circle } from '@antv/x6/lib/registry/marker/circle';\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         panning: true,\r\n"
+                },
+                {
+                    "date": 1665476173939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,10 +44,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source: rect,\r\n-        target: rect,\r\n+        source,\r\n+        target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665476182132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n </template>\r\n \r\n <script setup>\r\n import { Graph } from '@antv/x6'\r\n-import { rect } from '@antv/x6/lib/registry/connection-point/rect';\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         panning: true,\r\n"
+                },
+                {
+                    "date": 1665476567892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,16 +42,16 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-    graph.addEdge({\r\n-        source,\r\n-        target,\r\n-        vertices: [\r\n-            { x: 120, y: 60 },\r\n-            { x: 200, y: 100 },\r\n-        ],\r\n-    })\r\n+    // graph.addEdge({\r\n+    //     source,\r\n+    //     target,\r\n+    //     vertices: [\r\n+    //         { x: 120, y: 60 },\r\n+    //         { x: 200, y: 100 },\r\n+    //     ],\r\n+    // })\r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n@@ -60,10 +60,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    parent.addChild(source)\r\n-    parent.addChild(target)\r\n+    // parent.addChild(source)\r\n+    // parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665479457011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,16 +42,16 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-    // graph.addEdge({\r\n-    //     source,\r\n-    //     target,\r\n-    //     vertices: [\r\n-    //         { x: 120, y: 60 },\r\n-    //         { x: 200, y: 100 },\r\n-    //     ],\r\n-    // })\r\n+    graph.addEdge({\r\n+        source,\r\n+        target,\r\n+        vertices: [\r\n+            { x: 120, y: 60 },\r\n+            { x: 200, y: 100 },\r\n+        ],\r\n+    })\r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n@@ -60,10 +60,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    // parent.addChild(source)\r\n-    // parent.addChild(target)\r\n+    parent.addChild(source)\r\n+    parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665479528293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source,\r\n-        target,\r\n+        source: [],\r\n+        target: [],\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665479771269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,10 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        source: [],\r\n-        target: [],\r\n+        source,\r\n+        target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n         ],\r\n"
+                },
+                {
+                    "date": 1665479959075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,11 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n+        // eslint-disable-next-line no-undef\r\n         source,\r\n+        // eslint-disable-next-line no-undef\r\n         target,\r\n         vertices: [\r\n             { x: 120, y: 60 },\r\n             { x: 200, y: 100 },\r\n@@ -60,9 +62,11 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n+    // eslint-disable-next-line no-undef\r\n     parent.addChild(source)\r\n+    // eslint-disable-next-line no-undef\r\n     parent.addChild(target)\r\n       \r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1665479987367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,11 +63,11 @@\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n     // eslint-disable-next-line no-undef\r\n-    parent.addChild(source)\r\n+    // parent.addChild(source)\r\n     // eslint-disable-next-line no-undef\r\n-    parent.addChild(target)\r\n+    // parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665480000243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,18 +42,18 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-    graph.addEdge({\r\n-        // eslint-disable-next-line no-undef\r\n-        source,\r\n-        // eslint-disable-next-line no-undef\r\n-        target,\r\n-        vertices: [\r\n-            { x: 120, y: 60 },\r\n-            { x: 200, y: 100 },\r\n-        ],\r\n-    })\r\n+    // graph.addEdge({\r\n+    //     // eslint-disable-next-line no-undef\r\n+    //     source,\r\n+    //     // eslint-disable-next-line no-undef\r\n+    //     target,\r\n+    //     vertices: [\r\n+    //         { x: 120, y: 60 },\r\n+    //         { x: 200, y: 100 },\r\n+    //     ],\r\n+    // })\r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n"
+                },
+                {
+                    "date": 1665480266745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,18 +42,18 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-    // graph.addEdge({\r\n-    //     // eslint-disable-next-line no-undef\r\n-    //     source,\r\n-    //     // eslint-disable-next-line no-undef\r\n-    //     target,\r\n-    //     vertices: [\r\n-    //         { x: 120, y: 60 },\r\n-    //         { x: 200, y: 100 },\r\n-    //     ],\r\n-    // })\r\n+    graph.addEdge({\r\n+        // eslint-disable-next-line no-undef\r\n+        source,\r\n+        // eslint-disable-next-line no-undef\r\n+        target,\r\n+        vertices: [\r\n+            { x: 120, y: 60 },\r\n+            { x: 200, y: 100 },\r\n+        ],\r\n+    })\r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n@@ -62,12 +62,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    // eslint-disable-next-line no-undef\r\n-    // parent.addChild(source)\r\n-    // eslint-disable-next-line no-undef\r\n-    // parent.addChild(target)\r\n+    parent.addChild(source)\r\n+    parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665480920015,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,17 +43,15 @@\n             },\r\n         },\r\n     })\r\n     graph.addEdge({\r\n-        // eslint-disable-next-line no-undef\r\n-        source,\r\n-        // eslint-disable-next-line no-undef\r\n-        target,\r\n-        vertices: [\r\n-            { x: 120, y: 60 },\r\n-            { x: 200, y: 100 },\r\n-        ],\r\n-    })\r\n+  source: parent,\r\n+  target: child,\r\n+  vertices: [\r\n+    { x: 100, y: 200 }, \r\n+    { x: 300, y: 120 },\r\n+  ],\r\n+})\r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n@@ -62,10 +60,8 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     parent.addChild(child)\r\n-    parent.addChild(source)\r\n-    parent.addChild(target)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665480968294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,25 +42,26 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n-    graph.addEdge({\r\n-  source: parent,\r\n-  target: child,\r\n-  vertices: [\r\n-    { x: 100, y: 200 }, \r\n-    { x: 300, y: 120 },\r\n-  ],\r\n-})\r\n \r\n+\r\n     const parent = graph.addNode({\r\n         x: 80,\r\n         y: 40,\r\n         width: 320,\r\n         height: 240,\r\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n+    graph.addEdge({\r\n+  source: parent,\r\n+  target: child,\r\n+  vertices: [\r\n+    { x: 100, y: 200 }, \r\n+    { x: 300, y: 120 },\r\n+  ],\r\n+})\r\n     parent.addChild(child)\r\n       \r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1665481049477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n         width: 800,\r\n         height: 600\r\n     })\r\n \r\n-    const child = graph.addNode({\r\n+    const child1 = graph.addNode({\r\n         x: 120,\r\n         y: 80,\r\n         width: 120,\r\n         height: 60,\r\n@@ -42,8 +42,24 @@\n                 fill: '#fff',\r\n             },\r\n         },\r\n     })\r\n+    const child2 = graph.addNode({\r\n+        x: 300,\r\n+        y: 200,\r\n+        width: 120,\r\n+        height: 60,\r\n+        zIndex: 10,\r\n+        label: 'Child\\n(out)',\r\n+        attrs: {\r\n+            body: {\r\n+                fill: 'yellow',\r\n+            },\r\n+            label: {\r\n+                fill: '#fff',\r\n+            },\r\n+        },\r\n+    })\r\n \r\n \r\n     const parent = graph.addNode({\r\n         x: 80,\r\n@@ -53,10 +69,10 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     graph.addEdge({\r\n-  source: parent,\r\n-  target: child,\r\n+  source: child2,\r\n+  target: child1,\r\n   vertices: [\r\n     { x: 100, y: 200 }, \r\n     { x: 300, y: 120 },\r\n   ],\r\n"
+                },
+                {
+                    "date": 1665481066444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,9 @@\n     { x: 100, y: 200 }, \r\n     { x: 300, y: 120 },\r\n   ],\r\n })\r\n-    parent.addChild(child)\r\n+    parent.addChild(child1,child2)\r\n       \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665481135957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,17 +69,17 @@\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n     })\r\n     graph.addEdge({\r\n-  source: child2,\r\n-  target: child1,\r\n-  vertices: [\r\n-    { x: 100, y: 200 }, \r\n-    { x: 300, y: 120 },\r\n-  ],\r\n-})\r\n-    parent.addChild(child1,child2)\r\n-      \r\n+        source: child2,\r\n+        target: child1,\r\n+        vertices: [\r\n+            { x: 100, y: 200 },\r\n+            { x: 300, y: 120 },\r\n+        ],\r\n+    })\r\n+    parent.addChild(child1, child2)\r\n+\r\n }\r\n \r\n onMounted(() => {\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665481326905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,23 @@\n import { Graph } from '@antv/x6'\r\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n+        embedding: {\r\n+    enabled: true,\r\n+    findParent({ node }) {\r\n+      const bbox = node.getBBox()\r\n+      return this.getNodes().filter((node) => {\r\n+        // 只有 data.parent 为 true 的节点才是父节点\r\n+        const data = node.getData()\r\n+        if (data && data.parent) {\r\n+          const targetBBox = node.getBBox()\r\n+          return bbox.isIntersectWithRect(targetBBox)\r\n+        }\r\n+        return false\r\n+      })\r\n+    }\r\n+  },\r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n             visible: true,\r\n"
+                },
+                {
+                    "date": 1665481713437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         embedding: {\r\n+            console.log(1),\r\n     enabled: true,\r\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n"
+                },
+                {
+                    "date": 1665481737970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         embedding: {\r\n-            console.log(1),\r\n     enabled: true,\r\n     findParent({ node }) {\r\n       const bbox = node.getBBox()\r\n       return this.getNodes().filter((node) => {\r\n"
+                },
+                {
+                    "date": 1665481776770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,22 +12,22 @@\n import { onMounted } from 'vue';\r\n const init = () => {\r\n     const graph = new Graph({\r\n         embedding: {\r\n-    enabled: true,\r\n-    findParent({ node }) {\r\n-      const bbox = node.getBBox()\r\n-      return this.getNodes().filter((node) => {\r\n-        // 只有 data.parent 为 true 的节点才是父节点\r\n-        const data = node.getData()\r\n-        if (data && data.parent) {\r\n-          const targetBBox = node.getBBox()\r\n-          return bbox.isIntersectWithRect(targetBBox)\r\n-        }\r\n-        return false\r\n-      })\r\n-    }\r\n-  },\r\n+            enabled: true,\r\n+            findParent({ node }) {\r\n+                const bbox = node.getBBox()\r\n+                return this.getNodes().filter((node) => {\r\n+                    // 只有 data.parent 为 true 的节点才是父节点\r\n+                    const data = node.getData()\r\n+                    if (data && data.parent) {\r\n+                        const targetBBox = node.getBBox()\r\n+                        return bbox.isIntersectWithRect(targetBBox)\r\n+                    }\r\n+                    return false\r\n+                })\r\n+            }\r\n+        },\r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n             visible: true,\r\n"
+                },
+                {
+                    "date": 1665482177889,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,10 +24,11 @@\n                         return bbox.isIntersectWithRect(targetBBox)\r\n                     }\r\n                     return false\r\n                 })\r\n-            }\r\n-        },\r\n+            },\r\n+  },\r\n+        \r\n         panning: true,\r\n         grid: {\r\n             size: 20,\r\n             visible: true,\r\n"
+                },
+                {
+                    "date": 1665482276554,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n         y: 200,\r\n         width: 120,\r\n         height: 60,\r\n         zIndex: 10,\r\n-        label: 'Child\\n(out)',\r\n+        label: 'Child\\n(embedded)',\r\n         attrs: {\r\n             body: {\r\n                 fill: 'yellow',\r\n             },\r\n"
+                },
+                {
+                    "date": 1665482287966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n         y: 200,\r\n         width: 120,\r\n         height: 60,\r\n         zIndex: 10,\r\n-        label: 'Child\\n(embedded)',\r\n+        label: 'Child\\n(out)',\r\n         attrs: {\r\n             body: {\r\n                 fill: 'yellow',\r\n             },\r\n"
+                },
+                {
+                    "date": 1665482314140,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,9 +92,10 @@\n             { x: 100, y: 200 },\r\n             { x: 300, y: 120 },\r\n         ],\r\n     })\r\n-    parent.addChild(child1, child2)\r\n+    parent.addChild(child1)\r\n+    parent.addChild(child2)\r\n \r\n }\r\n \r\n onMounted(() => {\r\n"
+                },
+                {
+                    "date": 1665482329281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -94,9 +94,8 @@\n         ],\r\n     })\r\n     parent.addChild(child1)\r\n     parent.addChild(child2)\r\n-\r\n }\r\n \r\n onMounted(() => {\r\n     init()\r\n"
+                },
+                {
+                    "date": 1665482543860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,8 +83,11 @@\n         width: 320,\r\n         height: 240,\r\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n+        data:{\r\n+            parent:true\r\n+        }\r\n     })\r\n     graph.addEdge({\r\n         source: child2,\r\n         target: child1,\r\n"
+                },
+                {
+                    "date": 1665482578115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,8 +83,9 @@\n         width: 320,\r\n         height: 240,\r\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n+        //设置之后进入它的子节点才会变\r\n         data:{\r\n             parent:true\r\n         }\r\n     })\r\n"
+                }
+            ],
+            "date": 1665456327123,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <div class=\"group\">\r\n        <h1>Group</h1>\r\n    </div>\r\n</template>"
+        }
+    ]
+}
