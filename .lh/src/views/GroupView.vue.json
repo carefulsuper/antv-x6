@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 87,
+            "activePatchIndex": 88,
             "patches": [
                 {
                     "date": 1665456327123,
@@ -356,6 +356,10 @@
                 {
                     "date": 1665482578115,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,8 +83,9 @@\n         width: 320,\r\n         height: 240,\r\n         zIndex: 1,\r\n         label: 'Parent\\n(try to move me)',\r\n+        //设置之后进入它的子节点才会变\r\n         data:{\r\n             parent:true\r\n         }\r\n     })\r\n"
+                },
+                {
+                    "date": 1665482842205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,8 +88,11 @@\n         data:{\r\n             parent:true\r\n         }\r\n     })\r\n+    graph.drawBackground({\r\n+  color: 'yellow',\r\n+})\r\n     graph.addEdge({\r\n         source: child2,\r\n         target: child1,\r\n         vertices: [\r\n"
                 }
             ],
             "date": 1665456327123,

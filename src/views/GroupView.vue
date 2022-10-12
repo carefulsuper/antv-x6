@@ -89,6 +89,9 @@ const init = () => {
             parent:true
         }
     })
+    graph.drawBackground({
+  color: 'yellow',
+})
     graph.addEdge({
         source: child2,
         target: child1,
